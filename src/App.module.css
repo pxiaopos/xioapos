@@ -1,0 +1,27 @@
+.menuContainer {
+  width: 7000px;
+  margin: 10px;
+}
+
+.container {
+  width: 500px;
+  margin: 10px;
+}
+
+.sum {
+  color: red;
+}
+
+.item {
+  color: blue;
+}
+
+.box {
+  margin: 0 3px;
+  display: inline-block;
+}
+
+.btn {
+  padding: 15px 25px;
+  border: 1px solid black;
+}
