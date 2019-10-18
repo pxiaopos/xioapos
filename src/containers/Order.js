@@ -1,10 +1,10 @@
 // TODO: reacthook -> typescript
 import React, { PureComponent as Component } from 'react';
+import { Link } from 'react-router-dom'
 import cx from 'classnames'
 
-import styles from  './App.module.css';
-
-import menu from './menu';
+import styles from './Order.module.css';
+import menu from '../configs/menu';
 
 const today = () => {
   let today = new Date();
@@ -34,7 +34,7 @@ const amendCounter = (counter, item, num) => {
   return newCounter
 }
 
-class App extends Component {
+class Order extends Component {
   constructor(props) {
     super(props)
 
@@ -90,6 +90,10 @@ class App extends Component {
 
     return (
       <div>
+        <div>
+            <Link to='/order'>Order</Link>
+            <Link to='/history'>History</Link>
+        </div>
         <div className={styles.container}>
           <p>{ today() } <span className={styles.sum}>總金額: {sum} 元</span></p>
         </div>
@@ -127,4 +131,5 @@ class App extends Component {
   }
 }
 
-export default App
+
+export default Order
