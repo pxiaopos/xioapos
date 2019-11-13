@@ -2,6 +2,10 @@
 import React, { PureComponent as Component } from 'react';
 import { Link } from 'react-router-dom'
 import cx from 'classnames'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+
+import actions from '../actions'
 
 import styles from './Order.module.css';
 import menu from '../configs/menu';
@@ -131,5 +135,14 @@ class Order extends Component {
   }
 }
 
-
-export default Order
+export default compose(
+  connect(
+    state => ({
+      item: state.item,
+    }),
+    dispatch => ({
+      increase: () => dispatch(actions.increase()),
+      decrease: () => dispatch(actions.decrease())
+    })
+  ),
+)(Order)
