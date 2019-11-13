@@ -91,7 +91,7 @@ class Order extends Component {
     return (
       <div>
         <div>
-            <Link to='/order'>Order</Link>
+            <Link to='/order'>Order </Link>
             <Link to='/history'>History</Link>
         </div>
         <div className={styles.container}>

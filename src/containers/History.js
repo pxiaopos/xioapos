@@ -5,7 +5,7 @@ class Order extends Component {
     render() {
         return (
             <>
-            <Link to='/order'>Order</Link>
+            <Link to='/order'>Order </Link>
             <Link to='/history'>History</Link>
             </>
         )
