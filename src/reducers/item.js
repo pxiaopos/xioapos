@@ -6,7 +6,6 @@ const defaultState = {
 }
 
 const item = (state = defaultState, action) => {
-  console.log(action.type)
   switch (action.type) {
     case consts.item.increase:
       return assign({}, state, {})

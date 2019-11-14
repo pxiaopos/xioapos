@@ -1,13 +1,8 @@
 import consts from './consts'
 
-export const increase = () => {
+export const add = payload => {
   return {
-    type: consts.item.increase
-  }
-}
-
-export const decrease = () => {
-  return {
-    type: consts.item.decrease
+    type: consts.item.add,
+    payload: payload
   }
 }

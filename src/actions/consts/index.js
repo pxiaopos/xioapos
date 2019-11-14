@@ -1,5 +1,7 @@
 import item from './item'
+import history from './history'
 
 export default {
-    item: item
+    item: item,
+    history: history
 }

@@ -1,7 +1,5 @@
-const increase = 'INCREASE'
-const decrease = 'DECREASE'
+const add = 'ADD_ITEM'
 
 export default {
-    increase,
-    decrease
+    add
 }
