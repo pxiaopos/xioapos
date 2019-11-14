@@ -72,7 +72,6 @@ class Order extends Component {
   }
 
   Count = (item, num, price) => {
-    const { add } = this.props
     const { counter, sum } = this.state
 
     const isSumEqualZero = sum === 0

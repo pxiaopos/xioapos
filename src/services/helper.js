@@ -9,7 +9,6 @@ export const findLocalItems = query => {
                     date: i,
                     list: value
                 })
-                // Object.assign(results, {[i]: value})
             }
         }
     }
