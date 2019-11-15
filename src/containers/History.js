@@ -35,7 +35,7 @@ class History extends Component {
                     {
                         history.data.map((data, i) => (
                                 <tr key={data.date}>
-                                    <th>{data.date.substring(6)}</th>
+                                    <th>{data.date}</th>
                                     { menu.list.map((_, i) => <th key={data.date + '_' + i}>{data.list.counter[i] ? data.list.counter[i] : 0}</th>)}
                                     <th>{data.list.sum}</th>
                                 </tr>
