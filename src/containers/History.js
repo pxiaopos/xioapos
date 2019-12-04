@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
@@ -16,8 +15,6 @@ class History extends Component {
 
         return (
             <>
-            <Link to='/order'>Order </Link>
-            <Link to='/history'>History</Link>
             <p>size: {history.size}</p>
             <table> 
                 <thead> 

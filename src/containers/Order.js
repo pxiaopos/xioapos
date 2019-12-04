@@ -1,6 +1,5 @@
 // TODO: reacthook -> typescript
 import React, { PureComponent as Component } from 'react';
-import { Link } from 'react-router-dom'
 import cx from 'classnames'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
@@ -94,10 +93,6 @@ class Order extends Component {
 
     return (
       <div>
-        <div>
-            <Link to='/order'>Order </Link>
-            <Link to='/history'>History</Link>
-        </div>
         <div className={styles.container}>
           <p>{ today() } <span className={styles.sum}>總金額: {sum} 元</span></p>
         </div>
