@@ -1,10 +1,10 @@
 // TODO: reacthook -> typescript
 import React, { PureComponent as Component } from 'react';
-import cx from 'classnames'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 import Totaling from '../components/Totaling'
+import Meal from '../components/Meal'
 
 import actions from '../actions'
 import { today } from '../helper/time'
@@ -89,33 +89,7 @@ class Order extends Component {
       <div>
         <Totaling sum={sum}/>
         <div className={styles.menuContainer}>
-          {
-            menu.list.map((v, i) => {
-              return (
-                <div key={i}>
-                  <div className={styles.container} >
-                    <p className={cx(styles.box, styles.item)}>{ v.item }</p>
-                    <p className={styles.box}>{ v.price }</p>
-                    <p className={styles.box}>目前數量 { counter[i] || 0 }</p>
-                  </div>
-                  <div className={styles.container} key={i}>
-                    <p 
-                      className={cx(styles.box, styles.btn)}
-                      onClick={ e => {
-                        this.Count(i, -1, -v.price)
-                      }} 
-                    >-</p>
-                    <p 
-                      className={cx(styles.box, styles.btn)}
-                      onClick={ e => {
-                        this.Count(i, 1, v.price)
-                      }} 
-                    >+</p>
-                  </div>
-                </div>
-              )
-            })
-          }
+          { menu.list.map((v, i) => <Meal key={i} count={this.Count} id={i} v={v} num={counter[i]} />) }
         </div>
       </div>
     )
