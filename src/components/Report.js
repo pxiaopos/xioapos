@@ -7,6 +7,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import { addComma } from '../helper/number'
+
 import menu from '../configs/menu';
 
 const StyledTableCell = withStyles(theme => ({
@@ -62,7 +64,7 @@ export default function CustomizedTables(props) {
                 <StyledTableRow key={`${data.data}_${i}`}>
                   <StyledTableCell>{data.date}</StyledTableCell>
                     { menu.list.map((_, mi) => <StyledTableCell key={`${data.date}_${i}_${mi}`}>{data.list.counter[i] ? data.list.counter[i] : 0}</StyledTableCell>)}
-                  <StyledTableCell>{data.list.sum}</StyledTableCell>
+                  <StyledTableCell>{addComma(data.list.sum)}</StyledTableCell>
                 </StyledTableRow>
 
               )})
