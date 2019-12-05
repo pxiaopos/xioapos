@@ -4,19 +4,13 @@ import cx from 'classnames'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
+import Totaling from '../components/Totaling'
+
 import actions from '../actions'
+import { today } from '../helper/time'
 
 import styles from './Order.module.css';
 import menu from '../configs/menu';
-
-const today = () => {
-  let today = new Date();
-  let dd = today.getDate();
-  let mm = today.getMonth() + 1;
-  let yyyy = today.getFullYear();
-
-  return yyyy + '/' + mm + '/' + dd
-}
 
 const CACHE_PREFIX = 'cache_'
 const CACHE = CACHE_PREFIX + today()
@@ -93,9 +87,7 @@ class Order extends Component {
 
     return (
       <div>
-        <div className={styles.container}>
-          <p>{ today() } <span className={styles.sum}>總金額: {sum} 元</span></p>
-        </div>
+        <Totaling sum={sum}/>
         <div className={styles.menuContainer}>
           {
             menu.list.map((v, i) => {
