@@ -59,15 +59,14 @@ export default function CustomizedTables(props) {
         </TableHead>
         <TableBody>
             {
-              props.data.map((data, i) => {
-                return(
+              props.data.map((data, i) => (
                 <StyledTableRow key={`${data.data}_${i}`}>
                   <StyledTableCell>{data.date}</StyledTableCell>
-                    { menu.list.map((_, mi) => <StyledTableCell key={`${data.date}_${i}_${mi}`}>{data.list.counter[i] ? data.list.counter[i] : 0}</StyledTableCell>)}
+                    { menu.list.map((_, mi) => <StyledTableCell key={`${data.date}_${i}_${mi}`}>{data.list.counter[mi] ? data.list.counter[mi] : 0}</StyledTableCell>)}
                   <StyledTableCell>{addComma(data.list.sum)}</StyledTableCell>
                 </StyledTableRow>
 
-              )})
+              ))
             }
         </TableBody>
       </Table>
