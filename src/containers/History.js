@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
+import Report from '../components/Report'
+import StorageSize from '../components/StorageSize'
+
 import actions from '../actions'
-import menu from '../configs/menu';
 
 class History extends Component {
     componentDidMount() {
@@ -15,32 +17,8 @@ class History extends Component {
 
         return (
             <>
-            <p>size: {history.size}</p>
-            <table> 
-                <thead> 
-                    <tr>
-                        <th>日期</th>
-                        {
-                            menu.list.map((v, i) => {
-                                return <th key={i}>{v.item}</th>
-                            })
-                        } 
-                        <th>總金額</th>
-                    </tr> 
-                </thead> 
-                <tbody> 
-                    {
-                        history.data.map((data, i) => (
-                                <tr key={data.date}>
-                                    <th>{data.date}</th>
-                                    { menu.list.map((_, i) => <th key={data.date + '_' + i}>{data.list.counter[i] ? data.list.counter[i] : 0}</th>)}
-                                    <th>{data.list.sum}</th>
-                                </tr>
-                            )
-                        )
-                    }
-                </tbody> 
-            </table>
+                <StorageSize size={history.size} />
+                <Report data={history.data}/>
             </>
         )
     }
