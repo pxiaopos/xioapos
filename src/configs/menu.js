@@ -37,6 +37,10 @@ export default {
             "price": 120,
         },
         {
+            "item": "秘製鹹豬肉",
+            "price": 110,
+        },
+        {
             "item": "迷迭香雞胸",
             "price": 45,
         },
