@@ -41,6 +41,10 @@ export default {
             "price": 110,
         },
         {
+            "item": "韓式辣雞",
+            "price": 120,
+        },
+        {
             "item": "迷迭香雞胸",
             "price": 45,
         },
