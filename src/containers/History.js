@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
-import Report from '../components/Report';
-import StorageSize from '../components/StorageSize';
+import Report from 'components/Report';
+import StorageSize from 'components/StorageSize';
 
-import actions from '../actions';
+import actions from 'core/redux/actions';
 
 class History extends Component {
   componentDidMount () {

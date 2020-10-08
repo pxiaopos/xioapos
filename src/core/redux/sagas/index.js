@@ -1,7 +1,7 @@
 import { all, put, takeLatest } from 'redux-saga/effects';
 
-import consts from '../actions/consts';
-import services from '../services';
+import consts from 'core/redux/actions/consts';
+import services from 'core/services';
 
 function * add (action) {
   yield services.add(action);

@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 
 import Grid from '@material-ui/core/Grid';
 
-import Totaling from '../components/Totaling';
-import Meal from '../components/Meal';
+import Totaling from 'components/Totaling';
+import Meal from 'components/Meal';
 
-import actions from '../actions';
-import { today } from '../helper/time';
+import actions from 'core/redux/actions';
+import { today } from 'core/utilities/time';
 
-import menu from '../configs/menu';
+import menu from 'configs/menu';
 
 const CACHE_PREFIX = 'cache_';
 const CACHE = CACHE_PREFIX + today();

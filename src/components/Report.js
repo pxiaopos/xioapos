@@ -6,11 +6,10 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Divider from '@material-ui/core/Divider';
 
-import { addComma } from '../helper/number';
+import { addComma } from 'core/utilities/number';
 
-import menu from '../configs/menu';
+import menu from 'configs/menu';
 
 const StyledTableCell = withStyles(theme => ({
   head: {

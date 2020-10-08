@@ -1,4 +1,4 @@
-import consts from '../actions/consts';
+import consts from 'core/redux/actions/consts';
 
 const defaultState = {
   data: [],
