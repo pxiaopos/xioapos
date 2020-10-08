@@ -1,5 +1,5 @@
-const add = 'ADD_ITEM'
+const add = 'ADD_ITEM';
 
 export default {
-    add
-}
+  add,
+};

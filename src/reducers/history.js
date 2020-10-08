@@ -1,17 +1,17 @@
-import consts from '../actions/consts'
+import consts from '../actions/consts';
 
 const defaultState = {
   data: [],
-  size: ''
-}
+  size: '',
+};
 
 const history = (state = defaultState, action) => {
-    switch (action.type) {
+  switch (action.type) {
     case consts.history.update:
-        return {...state, ...action.res}
+      return { ...state, ...action.res };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default history
+export default history;

@@ -7,7 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import { addComma } from '../helper/number'
+import { addComma } from '../helper/number';
 
 import menu from '../configs/menu';
 
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function CustomizedTables(props) {
+export default function CustomizedTables (props) {
   const classes = useStyles();
 
   return (
@@ -51,23 +51,23 @@ export default function CustomizedTables(props) {
             <StyledTableCell>日期</StyledTableCell>
             {
               menu.list.map((v, i) => {
-                return <StyledTableCell key={i} align="right">{v.item}</StyledTableCell>
+                return <StyledTableCell key={i} align="right">{v.item}</StyledTableCell>;
               })
             }
             <StyledTableCell>總金額</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-            {
-              props.data.map((data, i) => (
-                <StyledTableRow key={`${data.data}_${i}`}>
-                  <StyledTableCell>{data.date}</StyledTableCell>
-                    { menu.list.map((_, mi) => <StyledTableCell key={`${data.date}_${i}_${mi}`}>{data.list.counter[mi] ? data.list.counter[mi] : 0}</StyledTableCell>)}
-                  <StyledTableCell>{addComma(data.list.sum)}</StyledTableCell>
-                </StyledTableRow>
+          {
+            props.data.map((data, i) => (
+              <StyledTableRow key={`${data.data}_${i}`}>
+                <StyledTableCell>{data.date}</StyledTableCell>
+                { menu.list.map((_, mi) => <StyledTableCell key={`${data.date}_${i}_${mi}`}>{data.list.counter[mi] ? data.list.counter[mi] : 0}</StyledTableCell>)}
+                <StyledTableCell>{addComma(data.list.sum)}</StyledTableCell>
+              </StyledTableRow>
 
-              ))
-            }
+            ))
+          }
         </TableBody>
       </Table>
     </Paper>

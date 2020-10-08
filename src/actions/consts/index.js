@@ -1,7 +1,7 @@
-import item from './item'
-import history from './history'
+import item from './item';
+import history from './history';
 
 export default {
-    item: item,
-    history: history
-}
+  item: item,
+  history: history,
+};

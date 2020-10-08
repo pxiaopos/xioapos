@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { withRouter, Switch, Route, Redirect } from 'react-router-dom'
+import React, { Component } from 'react';
+import { withRouter, Switch, Route, Redirect } from 'react-router-dom';
 import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu';
 import HistoryIcon from '@material-ui/icons/History';
 
@@ -17,8 +17,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-import Order from './Order'
-import History from './History'
+import Order from './Order';
+import History from './History';
 
 const drawerWidth = 240;
 
@@ -55,98 +55,98 @@ const styles = (theme) => ({
 });
 
 class App extends Component {
-    render() {
-        const { container, classes, history } = this.props;
+  render () {
+    const { container, classes, history } = this.props;
 
-        const drawer = (
-          <div>
-            <div className={classes.toolbar} />
-            <Divider />
-            <List>
-              { [ 
-                    {
-                        name: 'order',
-                        icon: () => <RestaurantMenuIcon />
-                    },
-                    {
-                        name: 'history',
-                        icon: () => <HistoryIcon />
-                    }
-                ].map((v, index) => (
-                    <ListItem button key={v.name}>
-                        <ListItemIcon>{v.icon()}</ListItemIcon>
-                        <ListItemText onClick={()=>{
-                            history.replace(`/${v.name}`)
-                        }} primary={ v.name } />
-                    </ListItem>
-                ))
-            }
-            </List>
-            <Divider />
-          </div>
-        );
+    const drawer = (
+      <div>
+        <div className={classes.toolbar} />
+        <Divider />
+        <List>
+          { [
+            {
+              name: 'order',
+              icon: () => <RestaurantMenuIcon />,
+            },
+            {
+              name: 'history',
+              icon: () => <HistoryIcon />,
+            },
+          ].map((v, index) => (
+            <ListItem button key={v.name}>
+              <ListItemIcon>{v.icon()}</ListItemIcon>
+              <ListItemText onClick={() => {
+                history.replace(`/${v.name}`);
+              }} primary={ v.name } />
+            </ListItem>
+          ))
+          }
+        </List>
+        <Divider />
+      </div>
+    );
 
-        const needRedirect = this.props.match.path === this.props.location.pathname
+    const needRedirect = this.props.match.path === this.props.location.pathname;
 
-        return (
-            <>
-                <div className={classes.root}>
-                    <CssBaseline />
-                    <AppBar position="fixed" className={classes.appBar}>
-                        <Toolbar>
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            edge="start"
-                            className={classes.menuButton}
-                        >
-                        </IconButton>
-                        <Typography variant="h6" noWrap>
+    return (
+      <>
+        <div className={classes.root}>
+          <CssBaseline />
+          <AppBar position="fixed" className={classes.appBar}>
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                className={classes.menuButton}
+              >
+              </IconButton>
+              <Typography variant="h6" noWrap>
                             水食
-                        </Typography>
-                        </Toolbar>
-                    </AppBar>
-                    <nav className={classes.drawer} aria-label="mailbox folders">
-                        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-                        <Hidden smUp implementation="css">
-                        <Drawer
-                            container={container}
-                            variant="temporary"
-                            anchor="left"
-                            classes={{
-                            paper: classes.drawerPaper,
-                            }}
-                            ModalProps={{
-                            keepMounted: true, // Better open performance on mobile.
-                            }}
-                        >
-                            {drawer}
-                        </Drawer>
-                        </Hidden>
-                        <Hidden xsDown implementation="css">
-                        <Drawer
-                            classes={{
-                            paper: classes.drawerPaper,
-                            }}
-                            variant="permanent"
-                            open
-                        >
-                            {drawer}
-                        </Drawer>
-                        </Hidden>
-                    </nav>
-                    <main className={classes.content}>
-                        <div className={classes.toolbar} />
-                        <Switch>
-                            { needRedirect && <Redirect from="/" to='/order' /> }
-                            <Route path="/order" render={props => <Order {...props} />} />
-                            <Route path="/history" render={props => <History {...props} />} />
-                        </Switch>
-                    </main>
-                </div>
-        </>
-        )
-    }
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <nav className={classes.drawer} aria-label="mailbox folders">
+            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+            <Hidden smUp implementation="css">
+              <Drawer
+                container={container}
+                variant="temporary"
+                anchor="left"
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+                ModalProps={{
+                  keepMounted: true, // Better open performance on mobile.
+                }}
+              >
+                {drawer}
+              </Drawer>
+            </Hidden>
+            <Hidden xsDown implementation="css">
+              <Drawer
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+                variant="permanent"
+                open
+              >
+                {drawer}
+              </Drawer>
+            </Hidden>
+          </nav>
+          <main className={classes.content}>
+            <div className={classes.toolbar} />
+            <Switch>
+              { needRedirect && <Redirect from="/" to='/order' /> }
+              <Route path="/order" render={props => <Order {...props} />} />
+              <Route path="/history" render={props => <History {...props} />} />
+            </Switch>
+          </main>
+        </div>
+      </>
+    );
+  }
 }
 
-export default withRouter(withStyles(styles)(App))
+export default withRouter(withStyles(styles)(App));
