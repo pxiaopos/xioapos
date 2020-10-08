@@ -50,7 +50,7 @@ class Order extends Component {
       sum: 0,
     };
 
-    if (localStorage.hasOwnProperty(CACHE)) {
+    if (Object.prototype.hasOwnProperty.call(localStorage, CACHE)) {
       const cache = localStorage.getItem(CACHE);
       this.state = JSON.parse(cache);
     }
