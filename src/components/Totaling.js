@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import { today } from '../helper/time'
+import { today } from 'core/utilities/time';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -11,13 +11,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function PaperSheet(props) {
+export default function PaperSheet (props) {
   const classes = useStyles();
 
   return (
     <Paper className={classes.root}>
-        <Typography variant="h5" component="h3">小記 - {today()}</Typography>
-        <Typography component="p" color="textSecondary">總金額: {props.sum} 元</Typography>
+      <Typography variant="h5" component="h3">今日小記（{today()}）</Typography>
+      <Typography component="p" color="textSecondary">總金額：{props.sum} 元</Typography>
     </Paper>
   );
 }

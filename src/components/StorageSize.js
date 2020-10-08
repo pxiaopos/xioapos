@@ -9,13 +9,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function PaperSheet(props) {
+export default function PaperSheet (props) {
   const classes = useStyles();
 
   return (
     <Paper className={classes.root}>
-        <Typography variant="h5" component="h3">儲存空間</Typography>
-        <Typography component="p" color="textSecondary">Size: {props.size}</Typography>
+      <Typography variant="h5" component="h3">儲存空間</Typography>
+      <Typography component="p" color="textSecondary">Size: {props.size}</Typography>
     </Paper>
   );
 }

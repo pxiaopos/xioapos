@@ -1,43 +1,44 @@
 // TODO: reacthook -> typescript
 import React, { PureComponent as Component } from 'react';
-import { compose } from 'redux'
-import { connect } from 'react-redux'
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
-import Totaling from '../components/Totaling'
-import Meal from '../components/Meal'
+import Grid from '@material-ui/core/Grid';
 
-import actions from '../actions'
-import { today } from '../helper/time'
+import Totaling from 'components/Totaling';
+import Meal from 'components/Meal';
 
-import styles from './Order.module.css';
-import menu from '../configs/menu';
+import actions from 'core/redux/actions';
+import { today } from 'core/utilities/time';
 
-const CACHE_PREFIX = 'cache_'
-const CACHE = CACHE_PREFIX + today()
+import menu from 'configs/menu';
+
+const CACHE_PREFIX = 'cache_';
+const CACHE = CACHE_PREFIX + today();
 
 const amendSum = (sum, price) => {
-  return sum + price
-}
+  return sum + price;
+};
 
 const amendCounter = (counter, item, num) => {
-  const newCounter = Object.assign({}, counter)
+  const newCounter = Object.assign({}, counter);
 
   if (!newCounter[item]) {
-    newCounter[item] = 0
+    newCounter[item] = 0;
   }
 
-  newCounter[item] = newCounter[item] + num
+  newCounter[item] = newCounter[item] + num;
 
-  return newCounter
-}
+  return newCounter;
+};
 
 class Order extends Component {
-  constructor(props) {
-    super(props)
+  constructor (props) {
+    super(props);
 
     // @ counter 為當前項目數量
     // @ sum 為所有項目總和金額
-    // 
+    //
     // state: {
     //  counter: {
     //    "chicken": 0,
@@ -48,51 +49,58 @@ class Order extends Component {
     this.state = {
       counter: {},
       sum: 0,
+    };
+
+    if (Object.prototype.hasOwnProperty.call(localStorage, CACHE)) {
+      const cache = localStorage.getItem(CACHE);
+      this.state = JSON.parse(cache);
     }
 
-    if (localStorage.hasOwnProperty(CACHE)) {
-      const cache = localStorage.getItem(CACHE)
-      this.state = JSON.parse(cache)
-    }
-
-    this.Count = this.Count.bind(this)
+    this.Count = this.Count.bind(this);
   }
 
-  componentDidUpdate(preProps, preState) {
+  componentDidUpdate (preProps, preState) {
     if (this.state !== preState) {
-      localStorage.setItem(CACHE, JSON.stringify(this.state))
-    } 
+      localStorage.setItem(CACHE, JSON.stringify(this.state));
+    }
   }
 
   Count = (item, num, price) => {
-    const { counter, sum } = this.state
+    const { counter, sum } = this.state;
 
-    const isSumEqualZero = sum === 0
-    const isPriceNegative = price < 0 
-    const isNumberNegative = num === -1
-    const isItemEqualZero = counter && ( counter[item] === 0 || counter[item] === undefined)
+    const isSumEqualZero = sum === 0;
+    const isPriceNegative = price < 0;
+    const isNumberNegative = num === -1;
+    const isItemEqualZero = counter && (counter[item] === 0 || counter[item] === undefined);
 
     if ((isSumEqualZero && isPriceNegative) || (isNumberNegative && isItemEqualZero)) {
-      return
+      return;
     }
 
     this.setState({
       counter: amendCounter(counter, item, num),
-      sum: amendSum(sum, price)
-    })
+      sum: amendSum(sum, price),
+    });
   }
 
-  render() {
-    const { counter, sum } = this.state
+  render () {
+    const { counter, sum } = this.state;
 
     return (
       <div>
         <Totaling sum={sum}/>
-        <div className={styles.menuContainer}>
-          { menu.list.map((v, i) => <Meal key={i} count={this.Count} id={i} v={v} num={counter[i]} />) }
-        </div>
+        <Grid container>
+          <h1>餐盒</h1>
+          <Grid container item spacing={3}>
+            { menu[0].map((v, i) => <Meal key={i} count={this.Count} id={i} v={v} num={counter[i]} />) }
+          </Grid>
+          <h1>單點</h1>
+          <Grid container item spacing={3}>
+            { menu[1].map((v, i) => <Meal key={i} count={this.Count} id={i} v={v} num={counter[i]} />) }
+          </Grid>
+        </Grid>
       </div>
-    )
+    );
   }
 }
 
@@ -103,6 +111,6 @@ export default compose(
     }),
     dispatch => ({
       add: params => dispatch(actions.item.add(params)),
-    })
+    }),
   ),
-)(Order)
+)(Order);

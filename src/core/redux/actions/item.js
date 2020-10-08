@@ -1,8 +1,8 @@
-import consts from './consts'
+import consts from './consts';
 
 export const add = payload => {
   return {
     type: consts.item.add,
-    payload: payload
-  }
-}
+    payload: payload,
+  };
+};

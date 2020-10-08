@@ -1,36 +1,36 @@
-import React, { Component } from 'react'
-import { compose } from 'redux'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
-import Report from '../components/Report'
-import StorageSize from '../components/StorageSize'
+import Report from 'components/Report';
+import StorageSize from 'components/StorageSize';
 
-import actions from '../actions'
+import actions from 'core/redux/actions';
 
 class History extends Component {
-    componentDidMount() {
-        this.props.load()
-    }
+  componentDidMount () {
+    this.props.load();
+  }
 
-    render() {
-        const { history } = this.props
+  render () {
+    const { history } = this.props;
 
-        return (
-            <>
-                <StorageSize size={history.size} />
-                <Report data={history.data}/>
-            </>
-        )
-    }
+    return (
+      <>
+        <StorageSize size={history.size} />
+        <Report data={history.data}/>
+      </>
+    );
+  }
 }
 
 export default compose(
-    connect(
-        state => ({
-            history: state.history,
-        }),
-        dispatch => ({
-            load: () => dispatch(actions.history.load()),
-        })
-    ),
-)(History)
+  connect(
+    state => ({
+      history: state.history,
+    }),
+    dispatch => ({
+      load: () => dispatch(actions.history.load()),
+    }),
+  ),
+)(History);
