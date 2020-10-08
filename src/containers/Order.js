@@ -3,13 +3,14 @@ import React, { PureComponent as Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
+import Grid from '@material-ui/core/Grid';
+
 import Totaling from '../components/Totaling';
 import Meal from '../components/Meal';
 
 import actions from '../actions';
 import { today } from '../helper/time';
 
-import styles from './Order.module.css';
 import menu from '../configs/menu';
 
 const CACHE_PREFIX = 'cache_';
@@ -88,9 +89,16 @@ class Order extends Component {
     return (
       <div>
         <Totaling sum={sum}/>
-        <div className={styles.menuContainer}>
-          { menu.list.map((v, i) => <Meal key={i} count={this.Count} id={i} v={v} num={counter[i]} />) }
-        </div>
+        <Grid container>
+          <h1>餐盒</h1>
+          <Grid container item spacing={3}>
+            { menu[0].map((v, i) => <Meal key={i} count={this.Count} id={i} v={v} num={counter[i]} />) }
+          </Grid>
+          <h1>單點</h1>
+          <Grid container item spacing={3}>
+            { menu[1].map((v, i) => <Meal key={i} count={this.Count} id={i} v={v} num={counter[i]} />) }
+          </Grid>
+        </Grid>
       </div>
     );
   }

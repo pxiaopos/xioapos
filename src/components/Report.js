@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
 
 import { addComma } from '../helper/number';
 
@@ -13,11 +14,14 @@ import menu from '../configs/menu';
 
 const StyledTableCell = withStyles(theme => ({
   head: {
+    textAlign: 'center',
     backgroundColor: theme.palette.primary.light,
     color: theme.palette.common.white,
+    borderRight: '1px solid #c5cae9',
   },
   body: {
     fontSize: 14,
+    textAlign: 'center',
   },
 }))(TableCell);
 
@@ -38,6 +42,9 @@ const useStyles = makeStyles(theme => ({
   table: {
     minWidth: 700,
   },
+  zero: {
+    color: '#bdbdbd',
+  },
 }));
 
 export default function CustomizedTables (props) {
@@ -48,9 +55,22 @@ export default function CustomizedTables (props) {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
+            <StyledTableCell></StyledTableCell>
+            <StyledTableCell colSpan={menu[0].length}>餐盒</StyledTableCell>
+            <StyledTableCell colSpan={menu[1].length}>單點</StyledTableCell>
+            <StyledTableCell></StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableHead>
+          <TableRow>
             <StyledTableCell>日期</StyledTableCell>
             {
-              menu.list.map((v, i) => {
+              menu[0].map((v, i) => {
+                return <StyledTableCell key={i} align="right">{v.item}</StyledTableCell>;
+              })
+            }
+            {
+              menu[1].map((v, i) => {
                 return <StyledTableCell key={i} align="right">{v.item}</StyledTableCell>;
               })
             }
@@ -61,11 +81,31 @@ export default function CustomizedTables (props) {
           {
             props.data.map((data, i) => (
               <StyledTableRow key={`${data.data}_${i}`}>
-                <StyledTableCell>{data.date}</StyledTableCell>
-                { menu.list.map((_, mi) => <StyledTableCell key={`${data.date}_${i}_${mi}`}>{data.list.counter[mi] ? data.list.counter[mi] : 0}</StyledTableCell>)}
-                <StyledTableCell>{addComma(data.list.sum)}</StyledTableCell>
+                <StyledTableCell><span>{data.date}</span></StyledTableCell>
+                {
+                  menu[0].map((_, mi) => {
+                    return (
+                      <StyledTableCell key={`${data.date}_${i}_${mi}`}>
+                        {data.list.counter[mi]
+                          ? <span>{data.list.counter[mi]}</span>
+                          : <span className={classes.zero}>0</span>}
+                      </StyledTableCell>
+                    );
+                  })
+                }
+                {
+                  menu[1].map((_, mi) => {
+                    return (
+                      <StyledTableCell key={`${data.date}_${i}_${mi}`}>
+                        {data.list.counter[mi]
+                          ? <span>{data.list.counter[mi]}</span>
+                          : <span className={classes.zero}>0</span>}
+                      </StyledTableCell>
+                    );
+                  })
+                }
+                <StyledTableCell><span>{addComma(data.list.sum)}</span></StyledTableCell>
               </StyledTableRow>
-
             ))
           }
         </TableBody>

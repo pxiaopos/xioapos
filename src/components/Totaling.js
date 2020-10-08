@@ -16,8 +16,8 @@ export default function PaperSheet (props) {
 
   return (
     <Paper className={classes.root}>
-      <Typography variant="h5" component="h3">小記 - {today()}</Typography>
-      <Typography component="p" color="textSecondary">總金額: {props.sum} 元</Typography>
+      <Typography variant="h5" component="h3">今日小記（{today()}）</Typography>
+      <Typography component="p" color="textSecondary">總金額：{props.sum} 元</Typography>
     </Paper>
   );
 }

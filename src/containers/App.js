@@ -8,7 +8,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -73,11 +72,13 @@ class App extends Component {
               icon: () => <HistoryIcon />,
             },
           ].map((v, index) => (
-            <ListItem button key={v.name}>
+            <ListItem
+              key={v.name}
+              button
+              onClick={() => { history.replace(`/${v.name}`); }}
+            >
               <ListItemIcon>{v.icon()}</ListItemIcon>
-              <ListItemText onClick={() => {
-                history.replace(`/${v.name}`);
-              }} primary={ v.name } />
+              <ListItemText primary={ v.name } />
             </ListItem>
           ))
           }
@@ -94,16 +95,7 @@ class App extends Component {
           <CssBaseline />
           <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                className={classes.menuButton}
-              >
-              </IconButton>
-              <Typography variant="h6" noWrap>
-                            水食
-              </Typography>
+              <Typography variant="h6" noWrap>水食</Typography>
             </Toolbar>
           </AppBar>
           <nav className={classes.drawer} aria-label="mailbox folders">

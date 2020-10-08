@@ -1,5 +1,5 @@
-export default {
-  list: [
+export default [
+  [
     {
       item: '水食蔬餐盒（素）',
       price: 65,
@@ -44,6 +44,8 @@ export default {
       item: '韓式辣雞',
       price: 120,
     },
+  ],
+  [
     {
       item: '迷迭香雞胸',
       price: 45,
@@ -81,4 +83,4 @@ export default {
       price: 45,
     },
   ],
-};
+];

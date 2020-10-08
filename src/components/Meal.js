@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3, 2),
     margin: 10,
     width: 450,
+    maxWidth: 480,
   },
   details: {
     display: 'flex',
@@ -38,12 +39,12 @@ export default function PaperSheet (props) {
       <div className={classes.details}>
         <CardContent className={classes.content}>
           <Typography variant="h5" component="h3">{ item }</Typography>
-          <Typography component="p">金額 { price } - 目前數量 { num || 0 }</Typography>
+          <Typography component="p">金額 { price } 元 - 已售出 { num || 0 } 份</Typography>
         </CardContent>
       </div>
       <div className={classes.cover}>
         <CardActions className={classes.content}>
-          <Fab fontSize="small" aria-label="remove" onClick={ e => count(id, -1, -price) } ><RemoveIcon /></Fab>
+          <Fab elevation={0} fontSize="small" aria-label="remove" onClick={ e => count(id, -1, -price) } ><RemoveIcon /></Fab>
           <Fab fontSize="small" aria-label="add" onClick={ e => count(id, 1, price) } ><AddIcon /></Fab>
         </CardActions>
       </div>
