@@ -1,7 +1,8 @@
 export const findLocalItems = query => {
-  let i, results = [];
+  const results = [];
+  let i = [];
   for (i in localStorage) {
-    if (localStorage.hasOwnProperty(i)) {
+    if (Object.prototype.hasOwnProperty.call(localStorage, i)) {
       if (i.match(query) || (!query && typeof i === 'string')) {
         const value = JSON.parse(localStorage.getItem(i));
         const date = i.substring(6);
@@ -21,7 +22,7 @@ export const findLocalItems = query => {
 export const localStorageSpace = () => {
   var allStrings = '';
   for (var key in window.localStorage) {
-    if (window.localStorage.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(window.localStorage, key)) {
       allStrings += window.localStorage[key];
     }
   }
