@@ -11,7 +11,7 @@ import Meal from 'components/Meal';
 import actions from 'core/redux/actions';
 import { today } from 'core/utilities/time';
 
-import menu from 'configs/menu';
+import { set, single } from 'configs/menu';
 
 const CACHE_PREFIX = 'cache_';
 const CACHE = CACHE_PREFIX + today();
@@ -92,11 +92,11 @@ class Order extends Component {
         <Grid container>
           <h1>餐盒</h1>
           <Grid container item spacing={3}>
-            { menu[0].map((v, i) => <Meal key={i} count={this.Count} id={i} v={v} num={counter[i]} />) }
+            { set.map((v, i) => <Meal key={i} count={this.Count} v={v} num={counter[v.id]} />) }
           </Grid>
           <h1>單點</h1>
           <Grid container item spacing={3}>
-            { menu[1].map((v, i) => <Meal key={i} count={this.Count} id={i} v={v} num={counter[i]} />) }
+            { single.map((v, i) => <Meal key={i} count={this.Count} v={v} num={counter[v.id]} />) }
           </Grid>
         </Grid>
       </div>

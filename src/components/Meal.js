@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function PaperSheet (props) {
-  const { count, id, num, v: { item, price } } = props;
+  const { count, num, v: { id, item, price } } = props;
   const classes = useStyles();
 
   return (
